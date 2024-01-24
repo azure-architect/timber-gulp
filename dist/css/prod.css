@@ -525,26 +525,47 @@ video {
     max-width: 1536px;
   }
 }
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
 .block {
   display: block;
+}
+.flex {
+  display: flex;
 }
 .hidden {
   display: none;
 }
+.flex-1 {
+  flex: 1 1 0%;
+}
 .resize {
   resize: both;
+}
+.border {
+  border-width: 1px;
+}
+.bg-slate-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
+.text-blue-600 {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
 .text-red-500 {
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
-}
-.text-red-600 {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 /*# sourceMappingURL=style.css.map */
