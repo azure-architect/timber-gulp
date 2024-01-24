@@ -13,30 +13,31 @@
 			{% block header %}
 				<div class="wrapper bg-gray-800">
 					<div class="container mx-auto">
-						<div class="flex ">
-							<div class="flex-1 py-4 ">
-								<h1 class="hdr-logo text-white py-5" role="banner">
+						<div class="flex items-center justify-between">
+							<div class="flex-1">
+								<h1 class="hdr-logo text-white py-5 m-0" role="banner">
 									<a class="hdr-logo-link capitalize text-3xl" href="{{site.url}}" rel="home">{{site.name}}</a>
 								</h1>
 							</div>
 
 							<div class="flex-1">
-								<nav id="nav-main" class="nav-main" role="navigation">
-									{% include "menu.twig" with {'items': menu.get_items} %}
+								<nav id="nav-main" class="nav-main text-white" role="navigation">
+									Item 2{% include "menu.twig" with {'items': menu.get_items} %}
 								</nav><!-- #nav -->
 							</div>
-							<div class="flex-1">
+							<div class="flex-1 text-white">
 								Item 3
 							</div>
 						</div>
 					</div>
-
-
-
-
 				</div>
 			{% endblock %}
 		</header>
+
+
+
+
+
 
 		<section id="content" role="main" class="content-wrapper">
 			{% if title %}<h1>{{title}}</h1>{% endif %}

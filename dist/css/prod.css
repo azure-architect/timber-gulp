@@ -525,6 +525,9 @@ video {
     max-width: 1536px;
   }
 }
+.m-0 {
+  margin: 0px;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -572,6 +575,9 @@ video {
 .justify-center {
   justify-content: center;
 }
+.justify-between {
+  justify-content: space-between;
+}
 .border {
   border-width: 1px;
 }
@@ -585,10 +591,6 @@ video {
 }
 .p-4 {
   padding: 1rem;
-}
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 .py-5 {
   padding-top: 1.25rem;
