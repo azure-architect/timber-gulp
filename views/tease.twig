@@ -1,9 +1,14 @@
-<article class="tease tease-{{post.type}}" id="tease-{{post.id}}">
+<article class="tease bg-white shadow-md rounded-lg overflow-hidden mx-auto my-4 p-6" id="tease-{{post.id}}">
+{#		{{ dump(post) }}#}
 	{% block content %}
-		<h2 class="h2"><a href="{{post.link}}">{{post.title}}</a></h2>
-		<p>{{ post.excerpt }}</p>
+		<h2 class="text-xl md:text-2xl font-semibold text-gray-800 hover:text-gray-600 transition-colors">
+			<a href="{{post.link}}">{{post.title}}</a>
+		</h2>
+		<p class="mt-2 text-base text-gray-600">
+			{{ post.excerpt }}
+		</p>
 		{% if post.thumbnail %}
-			<img src="{{post.thumbnail.src}}" />
+			<img src="{{post.thumbnail.src}}" class="mt-4 w-full h-auto object-cover rounded" />
 		{% endif %}
 	{% endblock %}
 </article>

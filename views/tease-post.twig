@@ -1,9 +1,16 @@
-{% extends "tease.twig" %}
-
 {% block content %}
-	<h2 class="h2"><a href="{{post.link}}">{{ post.title }}</a></h2>
-		<p>{{ post.excerpt({ words:5, read_more: "Keep reading" }) }}</p>
-		{% if post.thumbnail.src %}
-			<img src="{{ post.thumbnail.src }}" />
-		{% endif %}
+	{% set anchorColor = 'text-blue-600' %} <!-- Define your anchor tag color here -->
+
+	<h2 class="text-2xl md:text-3xl font-semibold text-gray-800 hover:text-gray-600 transition-colors">
+		<a href="{{ post.link }}">{{ post.title }}</a>
+	</h2>
+
+	<p class="mt-2 text-base text-gray-600">
+		{{ post.excerpt({ words: 5 }) | raw }}
+		<a href="{{ post.link }}" class="{{ anchorColor }} hover:underline">Keep reading</a> <!-- Styled read more link -->
+	</p>
+
+	{% if post.thumbnail.src %}
+		<img src="{{ post.thumbnail.src }}" class="mt-4 w-full h-auto object-cover rounded-lg shadow-md" />
+	{% endif %}
 {% endblock %}
