@@ -1,16 +1,82 @@
+{#Take the twig tags from this:"#}
+
+
+
+{#{% block content %}#}
+{#	{% set anchorColor = 'text-blue-400' %} <!-- Define your anchor tag color here -->#}
+
+{#	<h2 class="text-2xl md:text-3xl font-semibold text-gray-800 hover:text-gray-600 transition-colors dark:bg-gray-600 dark:text-white">#}
+{#		<a href="{{ post.link }}">{{ post.title }}</a>#}
+{#	</h2>#}
+
+{#	<p class="mt-2 text-base text-gray-600 dark:bg-gray-800 dark:text-white">#}
+{#		{{ post.excerpt({ words: 5, read_more: false }) | raw }}#}
+{#		<a href="{{ post.link }}" class="{{ anchorColor }} hover:underline">Keep reading</a> <!-- Styled read more link -->#}
+{#	</p>#}
+
+{#	{% if post.thumbnail.src %}#}
+{#		<img src="{{ post.thumbnail.src }}" class="mt-4 w-full h-auto object-cover rounded-lg shadow-md" />#}
+{#	{% endif %}#}
+{#{% endblock %}#}
+{#"#}
+
+{#put it into this: "#}
+
+
+
+{#<article class="p-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">#}
+{#	<a href="#">#}
+{#		<img class="mb-5 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/office-laptops.png" alt="office laptop working">#}
+{#	</a>#}
+{#	<span class="bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900">Article</span>#}
+{#	<h2 class="my-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">#}
+{#		<a href="#">Our first office</a>#}
+{#	</h2>#}
+{#	<p class="mb-4 font-light text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation and some hard work, we moved to our new office.</p>#}
+{#	<div class="flex items-center space-x-4">#}
+{#		<img class="w-10 h-10 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Jese Leos avatar">#}
+{#		<div class="font-medium dark:text-white">#}
+{#			<div>Jese Leos</div>#}
+{#			<div class="text-sm font-normal text-gray-500 dark:text-gray-400">Aug 15, 2021 · 16 min read</div>#}
+{#		</div>#}
+{#	</div>#}
+{#</article>#}
+
+
+{#"#}
+
 {% block content %}
-	{% set anchorColor = 'text-blue-600' %} <!-- Define your anchor tag color here -->
+	{% set anchorColor = 'text-blue-400' %} <!-- Define your anchor tag color here -->
 
-	<h2 class="text-2xl md:text-3xl font-semibold text-gray-800 hover:text-gray-600 transition-colors">
-		<a href="{{ post.link }}">{{ post.title }}</a>
-	</h2>
+	<article class="p-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+		{% if post.thumbnail.src %}
+			<a href="{{ post.link }}">
+				<img class="mb-5 rounded-lg" src="{{ post.thumbnail.src }}" alt="Thumbnail">
+			</a>
+		{% endif %}
 
-	<p class="mt-2 text-base text-gray-600">
-		{{ post.excerpt({ words: 5 }) | raw }}
-		<a href="{{ post.link }}" class="{{ anchorColor }} hover:underline">Keep reading</a> <!-- Styled read more link -->
-	</p>
+		<span class="bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900">Article</span>
 
-	{% if post.thumbnail.src %}
-		<img src="{{ post.thumbnail.src }}" class="mt-4 w-full h-auto object-cover rounded-lg shadow-md" />
-	{% endif %}
+		<h2 class="my-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+			<a href="{{ post.link }}">{{ post.title }}</a>
+		</h2>
+
+		<p class="mb-4 font-light text-gray-500 dark:text-gray-400">
+{#			{{ dump(post) }}#}
+			{{ post.excerpt({ words: 15, read_more: false , force : true}) | raw }}
+			<a href="{{ post.link }}" class="{{ anchorColor }} hover:underline">Keep reading</a> <!-- Styled read more link -->
+		</p>
+
+		<!-- The following part can be dynamic or static depending on your data structure -->
+		<div class="flex items-center space-x-4">
+			<!-- Placeholder for author image -->
+			<img class="w-10 h-10 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Author avatar">
+			<div class="font-medium dark:text-white">
+				<!-- Placeholder for author name -->
+				<div>Jese Leos</div>
+				<!-- Placeholder for post date and read time -->
+				<div class="text-sm font-normal text-gray-500 dark:text-gray-400">Aug 15, 2021 · 16 min read</div>
+			</div>
+		</div>
+	</article>
 {% endblock %}

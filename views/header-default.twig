@@ -1,28 +1,27 @@
-
 <header class="header">
     {% block header %}
-        <div class="bg-gray-800">
+        <div id="headerContainer" class="bg-white dark:bg-gray-900">
             <div class="container mx-auto px-4 py-5">
                 <div class="flex flex-col md:flex-row items-center justify-between">
                     <!-- Logo -->
-                    <h1 class="text-white text-3xl font-semibold mb-4 md:mb-0" role="banner">
-                        <a href="{{site.url}}" rel="home">{{site.name}}</a>
+                    <h1 class="text-gray-800 dark:text-white text-3xl font-semibold mb-4 md:mb-0" role="banner">
+                        <a href="{{ site.url }}" rel="home">{{ site.name }}</a>
                     </h1>
 
-
-
-      \
                     <!-- Navigation Menu -->
-                    <div class="text-white">
-                        <nav id="nav-main" class="nav-main text-white flex items-center" role="navigation">
-                            <!-- Dynamically included menu items, expected to be in a row -->
-                            {% include "menu.twig" with {'items': menu.get_items} %}
-                        </nav>
-{#                        {% include "menu.twig" with {'items': menu.get_items} %}#}
+                    <nav id="nav-main" class="nav-main dark:text-white flex items-center" role="navigation">
+                        <!-- Dynamically included menu items, expected to be in a row -->
+                        {% include "menu.twig" with {'items': menu.get_items} %}
+                    </nav>
 
-                    </div>
+                    <!-- Toggle Dark Mode Button -->
+                    <button id="theme-toggle" class="ml-4 bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-300 px-3 py-2 rounded">
+                        Toggle Dark Mode
+                    </button>
                 </div>
             </div>
         </div>
     {% endblock %}
 </header>
+
+

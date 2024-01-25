@@ -1,26 +1,13 @@
-{#<article class="tease bg-white shadow-md rounded-lg overflow-hidden mx-auto my-4 p-6" id="tease-{{post.id}}">#}
-{#		{{ dump(post) }}#}
-{#	{% block content %}#}
-{#		<h2 class="text-xl md:text-2xl font-semibold text-gray-800 hover:text-gray-600 transition-colors">#}
-{#			<a href="{{post.link}}">{{post.title}}</a>#}
-{#		</h2>#}
-{#		<p class="mt-2 text-base text-gray-600">#}
-{#			{{ post.excerpt }}#}
-{#		</p>#}
-{#		{% if post.thumbnail %}#}
-{#			<img src="{{post.thumbnail.src}}" class="mt-4 w-full h-auto object-cover rounded" />#}
-{#		{% endif %}#}
-{#	{% endblock %}#}
-{#</article>#}
 
 
-<article class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-4">
+
+<article class="max-w-md mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden md:max-w-2xl m-4">
 	<div class="md:flex">
 		<div class="p-8">
-			<h2 class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+			<h2 class="block mt-1 text-lg leading-tight font-medium text-black dark:bg-gray-600 dark:text-white hover:underline">
 				<a href="{{post.link}}">{{ post.title }}</a>
 			</h2>
-			<p class="mt-2 text-gray-500">{{ post.excerpt }}</p>
+			<p class="mt-2 text-gray-500 dark:text-gray-200">{{ post.excerpt }}</p>
 		</div>
 		{% if post.thumbnail.src %}
 			<div class="md:flex-shrink-0">

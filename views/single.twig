@@ -40,11 +40,58 @@
 {#{% endblock %}#}
 
 
+{#{% extends "base.twig" %}#}
+
+{#{% block content %}#}
+{#	<div class="content-wrapper max-w-screen-lg mx-auto p-4">#}
+{#		<article class="post-type-{{ post.post_type }} bg-white shadow-lg rounded-lg overflow-hidden" id="post-{{ post.ID }}">#}
+
+{#			<!-- Image -->#}
+{#			<div class="w-full h-64 bg-theme-color overflow-hidden relative">#}
+{#				<img src="{{ post.thumbnail.src }}" class="absolute inset-0 w-full h-full object-cover">#}
+{#			</div>#}
+
+{#			<!-- Article Content -->#}
+{#			<section class="article-content p-6">#}
+{#				<h1 class="article-h1 text-3xl font-bold mb-4">{{ post.title }}</h1>#}
+{#				<a href="{{ post.link }}" class="text-blue-600 capitalize hover:underline">{{ _e('edit') }}</a>#}
+{#				<p class="blog-author text-sm text-gray-600 mt-1 mb-4">#}
+{#					<span>By</span>#}
+{#					<a href="{{post.author.path}}" class="text-blue-600 hover:underline"> {{ post.author.name }} </a>#}
+{#					<span>&bull;</span>#}
+{#					<time datetime="{{ post.date|date('Y-m-d H:i:s') }}" class="font-medium">{{ post.date }}</time>#}
+{#				</p>#}
+{#				<div class="article-body text-gray-700">#}
+{#					{{post.content}}#}
+{#				</div>#}
+{#			</section>#}
+
+{#			<!-- Comment Box -->#}
+{#			<section class="comment-box p-6 bg-gray-100">#}
+{#				<div class="comments">#}
+{#					{% if post.comments %}#}
+{#						<h3 class="text-xl font-semibold mb-2">Comments</h3>#}
+{#						{% for cmt in post.comments %}#}
+{#							{% include "comment.twig" with {comment:cmt} %}#}
+{#						{% endfor %}#}
+{#					{% endif %}#}
+{#				</div>#}
+
+{#				{% if post.comment_status == "closed" %}#}
+{#					<p class="text-gray-500 italic">Comments for this post are closed.</p>#}
+{#				{% else %}#}
+{#					{% include "comment-form.twig" %}#}
+{#				{% endif %}#}
+{#			</section>#}
+{#		</article>#}
+{#	</div><!-- /content-wrapper -->#}
+{#{% endblock %}#}
+
 {% extends "base.twig" %}
 
 {% block content %}
 	<div class="content-wrapper max-w-screen-lg mx-auto p-4">
-		<article class="post-type-{{ post.post_type }} bg-white shadow-lg rounded-lg overflow-hidden" id="post-{{ post.ID }}">
+		<article class="post-type-{{ post.post_type }} bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden" id="post-{{ post.ID }}">
 
 			<!-- Image -->
 			<div class="w-full h-64 bg-theme-color overflow-hidden relative">
@@ -53,24 +100,24 @@
 
 			<!-- Article Content -->
 			<section class="article-content p-6">
-				<h1 class="article-h1 text-3xl font-bold mb-4">{{ post.title }}</h1>
-				<a href="{{ post.link }}" class="text-blue-600 capitalize hover:underline">{{ _e('edit') }}</a>
-				<p class="blog-author text-sm text-gray-600 mt-1 mb-4">
+				<h1 class="article-h1 text-3xl font-bold mb-4 text-gray-900 dark:text-white">{{ post.title }}</h1>
+				<a href="{{ post.link }}" class="text-blue-600 dark:text-blue-400 capitalize hover:underline">{{ _e('edit') }}</a>
+				<p class="blog-author text-sm text-gray-600 dark:text-gray-400 mt-1 mb-4">
 					<span>By</span>
-					<a href="{{post.author.path}}" class="text-blue-600 hover:underline"> {{ post.author.name }} </a>
+					<a href="{{post.author.path}}" class="text-blue-600 dark:text-blue-400 hover:underline"> {{ post.author.name }} </a>
 					<span>&bull;</span>
 					<time datetime="{{ post.date|date('Y-m-d H:i:s') }}" class="font-medium">{{ post.date }}</time>
 				</p>
-				<div class="article-body text-gray-700">
+				<div class="article-body text-gray-700 dark:text-gray-300">
 					{{post.content}}
 				</div>
 			</section>
 
 			<!-- Comment Box -->
-			<section class="comment-box p-6 bg-gray-100">
+			<section class="comment-box p-6 bg-gray-100 dark:bg-gray-900">
 				<div class="comments">
 					{% if post.comments %}
-						<h3 class="text-xl font-semibold mb-2">Comments</h3>
+						<h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Comments</h3>
 						{% for cmt in post.comments %}
 							{% include "comment.twig" with {comment:cmt} %}
 						{% endfor %}
@@ -78,7 +125,7 @@
 				</div>
 
 				{% if post.comment_status == "closed" %}
-					<p class="text-gray-500 italic">Comments for this post are closed.</p>
+					<p class="text-gray-500 dark:text-gray-400 italic">Comments for this post are closed.</p>
 				{% else %}
 					{% include "comment-form.twig" %}
 				{% endif %}

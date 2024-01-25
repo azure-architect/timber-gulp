@@ -23,6 +23,7 @@ function lk_styles_loader()
     $styles = get_template_directory_uri() . '/dist/css/prod.css';
     $scripts = get_template_directory_uri() . '/dist/js/custom.js';
     wp_enqueue_style('lk-styles', $styles, array(), null);
+    wp_enqueue_script('lk-scripts', $scripts, array(), null, true);
 }
 
 add_action('wp_enqueue_scripts', 'lk_styles_loader');
