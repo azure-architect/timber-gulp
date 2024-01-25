@@ -1,10 +1,30 @@
+{#{% if menu %}#}
+{#	<ul>#}
+{#	{% for item in items %}#}
+{#		<li class="{{ item.classes | join(' ') }}">#}
+{#			<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>#}
+{#			{% include "menu.twig" with {'items': item.children} %}#}
+{#		</li>#}
+{#	{% endfor %}#}
+{#	</ul>#}
+{#{% endif %}#}
+
 {% if menu %}
-	<ul>
-	{% for item in items %}
-		<li class="{{ item.classes | join(' ') }}">
-			<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
-			{% include "menu.twig" with {'items': item.children} %}
-		</li>
-	{% endfor %}
+	<ul class="flex">
+		{% for item in items %}
+			<li class="{{ item.classes | join(' ') }} mr-4 last:mr-0">
+				{% set max_length = 10 %}
+				{% set display_title = item.title %}
+				{% if display_title|length > max_length %}
+					{% set display_title = display_title|slice(0, max_length) ~ '...' %}
+				{% endif %}
+				<a target="{{ item.target }}" href="{{ item.link }}">{{ display_title }}</a>
+				{% if item.children %}
+					{% include "menu.twig" with {'items': item.children, 'menu': true} %}
+				{% endif %}
+			</li>
+		{% endfor %}
 	</ul>
 {% endif %}
+
+
