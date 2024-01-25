@@ -1,28 +1,62 @@
-<div class="comment-form">
-    <h3>Add comment</h3>
-    <form class="comment-form" method="post" action="{{ site.site_url~'/wp-comments-post.php' }}">
-        {% if  user %}
+{#<div class="comment-form">#}
+{#    <h3>Add comment</h3>#}
+{#    <form class="comment-form" method="post" action="{{ site.site_url~'/wp-comments-post.php' }}">#}
+{#        {% if  user %}#}
+{#            <input type="hidden" name="email" value="{{ user.email }}">#}
+{#            <input type="hidden" name="author" value="{{ user.name }}">#}
+{#            <input type="hidden" name="url" value="{{ user.link }}">#}
+{#        {% else %}#}
+{#            <label>Email<br>#}
+{#                <input required name="email" type="email" id="email">#}
+{#            </label>#}
+{#            <label>Name<br>#}
+{#                <input required name="author" type="text">#}
+{#            </label>#}
+{#            <label>Website<br>#}
+{#                <input name="url" type="url">#}
+{#            </label>#}
+{#        {% endif %}#}
+{#        <label>Comment<br>#}
+{#            <textarea placeholder="Leave a comment..." name="comment" cols="60" rows="3"></textarea>#}
+{#        </label>#}
+{#        <input name="comment_post_ID" value="{{ post.id }}" type="hidden">#}
+{#        <input name="comment_parent"  value="{{ comment.ID|default('0') }}" type="hidden">#}
+{#        <button type="submit" name="Submit" class="btn">Send</button>#}
+{#        <button type="reset">Cancel</button>#}
+{#        <p>Your comment will be revised by the site if needed.</p>#}
+{#    </form>#}
+{#</div>#}
+<div class="comment-form mt-6">
+    <h3 class="text-xl font-semibold mb-4">Add Comment</h3>
+    <form class="comment-form" method="post" action="{{ site.site_url~'/wp-comments-post.php' }}" aria-label="Add Comment">
+        {% if user %}
             <input type="hidden" name="email" value="{{ user.email }}">
             <input type="hidden" name="author" value="{{ user.name }}">
             <input type="hidden" name="url" value="{{ user.link }}">
         {% else %}
-            <label>Email<br>
-                <input required name="email" type="email" id="email">
-            </label>
-            <label>Name<br>
-                <input required name="author" type="text">
-            </label>
-            <label>Website<br>
-                <input name="url" type="url">
-            </label>
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input required name="email" type="email" id="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div class="mb-4">
+                <label for="author" class="block text-sm font-medium text-gray-700">Name</label>
+                <input required name="author" type="text" id="author" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div class="mb-4">
+                <label for="url" class="block text-sm font-medium text-gray-700">Website</label>
+                <input name="url" type="url" id="url" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
         {% endif %}
-        <label>Comment<br>
-            <textarea placeholder="Leave a comment..." name="comment" cols="60" rows="3"></textarea>
-        </label>
+        <div class="mb-4">
+            <label for="comment" class="block text-sm font-medium text-gray-700">Comment</label>
+            <textarea name="comment" id="comment" cols="60" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Leave a comment..."></textarea>
+        </div>
         <input name="comment_post_ID" value="{{ post.id }}" type="hidden">
         <input name="comment_parent"  value="{{ comment.ID|default('0') }}" type="hidden">
-        <button type="submit" name="Submit" class="btn">Send</button>
-        <button type="reset">Cancel</button>
-        <p>Your comment will be revised by the site if needed.</p>
+        <div class="flex justify-start items-center">
+            <button type="submit" name="Submit" class="btn me-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md">Send</button>
+            <button type="reset" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-black font-semibold rounded-md">Cancel</button>
+        </div>
+        <p class="mt-3 text-sm text-gray-600">Your comment will be reviewed before publishing.</p>
     </form>
 </div>
